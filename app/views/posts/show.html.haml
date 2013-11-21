@@ -1,0 +1,50 @@
+%section{class: 'posts'}
+  %section{class: 'post-header'}
+    %header{class: 'post-title'}
+      = @post.title
+
+
+  %section{class: 'post'}
+    %p
+      = @post.body
+    
+    %footer
+      = link_to 'Back', posts_path
+      |
+      = link_to 'Edit', edit_post_path(@post)
+
+      = button_to '⬆', post_votes_path(@post, direction: 'up')
+      = button_to '⬇', post_votes_path(@post, direction: 'down')
+  
+  %section{class: 'comments'}
+  
+    %h4
+      Leave a comment:
+
+    %section{class: 'comment-count'}
+      %p
+        = pluralize @post.comments.count, 'comment'
+      
+    %section{class: 'post-comment-form'}
+      = form_for [@post, Comment.new] do |f|
+        .username-field
+          = f.text_field :user, placeholder: 'Yo name!'
+        .message-body
+          = f.text_area :body, placeholder: 'Leave your comment yo!'
+        .submit-button
+          = f.submit 'Submit comment'
+
+    %section{class: 'post-comments'}
+      - @post.comments.each do |comment|
+        .comment
+          %section{class: 'commenter'}
+            %h5
+              = comment.user
+          %section{class: 'post-comment'}
+            %p
+              = comment.body
+          %section{class: 'comment-links'}
+            = link_to 'Destroy Comment', [comment.post, comment],
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' }
+          %br

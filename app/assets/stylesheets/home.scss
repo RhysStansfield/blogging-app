@@ -1,0 +1,42 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ 
+html, body {
+  margin: 0;
+  min-height: 100%;
+ }
+
+.home_block {
+  margin-top: 12%;
+  width: 100%;
+  min-height: 100%;
+  text-align: center;
+}
+
+.home_block h1 {
+  font-size: 90px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+.home_block a {
+  padding: 6px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 1.5s;
+  -webkit-transition: background 1.5s;
+}
+
+.home_block a:hover {
+  background: #CCC;
+}
+
+.home_block a, .home_block a:visited, .home_block a:hover {
+  font-size: 40px;
+  color: rgb(85, 26, 139);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Roboto Condensed', sans-serif;
+}
