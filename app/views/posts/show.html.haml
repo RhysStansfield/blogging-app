@@ -13,8 +13,18 @@
       |
       = link_to 'Edit', edit_post_path(@post)
 
-      = button_to '⬆', post_votes_path(@post, direction: 'up')
-      = button_to '⬇', post_votes_path(@post, direction: 'down')
+      %section{class: 'votes'}
+        .total-votes
+          = @post.total_votes
+        .vote-buttons
+          .up-vote
+            = vote_button @post, 'up', '⬆'
+            .total-ups
+              = @post.up
+          .down-vote  
+            = vote_button @post, 'down', '⬇'
+            .total-downs
+              =@post.down
   
   %section{class: 'comments'}
   
