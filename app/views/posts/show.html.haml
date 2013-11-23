@@ -57,4 +57,16 @@
             = link_to 'Destroy Comment', [comment.post, comment],
                       method: :delete,
                       data: { confirm: 'Are you sure?' }
+          %section{class: 'votes'}
+            .total-votes{'data-id' => comment.id}
+              = comment.total_votes
+            .vote-buttons
+              .up-vote
+                = comment_vote_button comment, 'up', '⬆'
+                .total-ups{'data-id' => comment.id}
+                  = comment.up
+              .down-vote  
+                = comment_vote_button comment, 'down', '⬇'
+                .total-downs{'data-id' => comment.id}
+                  =comment.down
           %br
